@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A personal observatory of Balendu Bhushan Pandey: art, history, anthropology, design, technology, projects, and curious observations.">
+<title>BALENDU // DEEP SPACE ARCHIVE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#050816; --bg2:#091225; --panel:rgba(9,18,37,.72);
+  --ink:#e8eef7; --muted:#8d9aaf; --blue:#6e9fd8; --line:rgba(141,154,175,.22);
+  --amber:#d8b277; --serif:"Playfair Display",Georgia,serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;background:
+ radial-gradient(circle at 50% 20%,rgba(55,91,145,.13),transparent 34%),
+ radial-gradient(circle at 80% 70%,rgba(37,65,111,.08),transparent 30%)}
+#stars{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.55;animation:twinkle 5s infinite ease-in-out}
+@keyframes twinkle{50%{opacity:.15;transform:scale(.65)}}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.mono{font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;font-size:.7rem;color:var(--muted)}
+.serif{font-family:var(--serif)}
+nav{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:linear-gradient(var(--bg),transparent);z-index:20}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.67rem;color:var(--muted);transition:.25s}
+.nav-links a:hover{color:var(--ink)}
+.status{display:flex;align-items:center;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:#a9d0ff;box-shadow:0 0 12px #6e9fd8}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);padding:8px 10px}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;padding:110px 20px 70px}
+.hero-inner{text-align:center;max-width:900px}
+.orbit{width:min(460px,76vw);aspect-ratio:1;margin:0 auto 35px;border:1px solid rgba(110,159,216,.35);border-radius:50%;position:relative;display:grid;place-items:center;box-shadow:0 0 100px rgba(56,94,150,.08)}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(141,154,175,.13);border-radius:50%;inset:9%;transform:rotate(25deg)}
+.orbit:after{inset:-8%;transform:rotate(-30deg) scaleY(.32);border-color:rgba(110,159,216,.3)}
+.planet{width:57%;aspect-ratio:1;border-radius:50%;background:
+ radial-gradient(circle at 33% 27%,#dbe5f3 0 2%,#91a6bf 3% 8%,transparent 9%),
+ radial-gradient(circle at 65% 65%,#172a46 0 9%,transparent 10%),
+ radial-gradient(circle at 40% 60%,#172a46 0 14%,transparent 15%),
+ radial-gradient(circle at 35% 35%,#c4d0df,#50647c 58%,#172a46 100%);
+ box-shadow:inset -28px -22px 55px rgba(0,0,0,.55),0 0 50px rgba(110,159,216,.16);
+ display:grid;place-items:center}
+.portrait{width:53%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(232,238,247,.35);background:linear-gradient(145deg,#172a46,#091225);display:grid;place-items:center;color:var(--muted);font-size:.58rem;letter-spacing:.12em}
+h1{font:500 clamp(2.3rem,6vw,5.2rem)/1 var(--serif);letter-spacing:-.035em;margin:0 0 14px}
+
+.orbit {
+  width: min(460px, 76vw);
+  aspect-ratio: 1;
+  margin: 0 auto 35px;
+  border: 1px solid rgba(110, 159, 216, 0.35);
+  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 100px rgba(56, 94, 150, 0.08);
+}
+
+.planet {
+  position: relative;
+  width: 57%;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 33% 27%,
+      #dbe5f3 0 2%,
+      #91a6bf 3% 8%,
+      transparent 9%
+    ),
+    radial-gradient(
+      circle at 65% 65%,
+      #172a46 0 9%,
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      #172a46 0 14%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 35% 35%,
+      #c4d0df,
+      #50647c 58%,
+      #172a46 100%
+    );
+
+  box-shadow:
+    inset -28px -22px 55px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(110, 159, 216, 0.16);
+}
+
+/* Portrait stays entirely inside the planet */
+.portrait-image {
+  position: absolute;
+
+  width: 53%;
+  height: 53%;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+  border: 1px solid rgba(232, 238, 247, 0.55);
+
+  display: block;
+
+  z-index: 2;
+
+  box-shadow:
+    0 0 25px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(110, 159, 216, 0.12);
+}
+.lede{font:400 clamp(1rem,2vw,1.25rem)/1.65 var(--serif);color:#c7d0dd;max-width:680px;margin:0 auto}
+.meta{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:28px 0}
+.scroll{margin-top:45px;color:var(--muted);font-size:.67rem}
+section{padding:120px 0;position:relative}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:55px}
+.section-title{font:500 clamp(2rem,5vw,4rem)/1.05 var(--serif);margin:8px 0 0}
+.panel{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(12px);border-radius:3px}
+.about-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:45px}
+.about-copy{font:400 clamp(1.2rem,2vw,1.55rem)/1.65 var(--serif);color:#d6deea}
+.profile{padding:28px;align-self:start}
+.profile pre{white-space:pre-wrap;color:#bdc9d9;line-height:1.9;font-size:.72rem}
+.marker{color:var(--blue)}
+.orbit-map{min-height:620px;position:relative;display:grid;place-items:center}
+.core{width:120px;height:120px;border:1px solid var(--blue);border-radius:50%;display:grid;place-items:center;background:rgba(9,18,37,.85);box-shadow:0 0 50px rgba(110,159,216,.13)}
+.nodes{position:absolute;inset:25px}
+.node{position:absolute;width:155px;padding:15px;border:1px solid var(--line);background:rgba(5,8,22,.75);transition:.3s}
+.node:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 0 30px rgba(110,159,216,.1)}
+.node strong{font:500 1.15rem var(--serif);display:block;margin:6px 0}
+.node p{font-size:.65rem;line-height:1.6;color:var(--muted);margin:0}
+.n1{left:4%;top:12%}.n2{left:38%;top:1%}.n3{right:3%;top:15%}.n4{right:0;top:55%}.n5{right:31%;bottom:1%}.n6{left:36%;bottom:8%}.n7{left:2%;bottom:18%}.n8{left:0;top:48%}
+.connections{position:absolute;inset:15%;border:1px dashed rgba(110,159,216,.18);border-radius:50%;pointer-events:none}
+.gallery{columns:3 240px;column-gap:16px}
+.art{break-inside:avoid;margin:0 0 16px;min-height:230px;padding:0;position:relative;overflow:hidden;background:linear-gradient(145deg,#172a46,#091225)}
+.art:nth-child(2){min-height:340px}.art:nth-child(3){min-height:260px}.art:nth-child(4){min-height:310px}
+.art-visual{height:100%;min-height:inherit;display:grid;place-items:center;font:500 clamp(1.5rem,3vw,2.6rem) var(--serif);color:rgba(232,238,247,.8);text-align:center;padding:30px}
+.art:nth-child(1) .art-visual{background:radial-gradient(circle at 55% 40%,#e4c979 0 4%,transparent 5%),radial-gradient(circle at 35% 50%,#406e98 0 17%,transparent 18%),linear-gradient(135deg,#102b4d,#0a1324)}
+.art:nth-child(2) .art-visual{background:radial-gradient(circle,#c47bde 0 7%,transparent 8%),conic-gradient(from 20deg,#172a46,#a04e9a,#10233c,#d8b277,#172a46)}
+.art:nth-child(3) .art-visual{background:linear-gradient(160deg,#d8b277 0 8%,#172a46 8% 48%,#091225 48%)}
+.art-image {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.art:hover .art-image {
+  transform: scale(1.04);
+}
+.caption{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-size:.68rem}
+.caption b{display:block;font:500 1.2rem var(--serif);margin:4px 0}
+.missions{display:grid;gap:14px}
+.mission{display:grid;grid-template-columns:110px 1fr auto;gap:25px;padding:27px;align-items:center}
+.mission h3{font:500 1.7rem var(--serif);margin:5px 0}
+.mission p{color:var(--muted);line-height:1.65;font-size:.8rem;max-width:700px}
+.btn{border:1px solid var(--line);padding:11px 14px;font-size:.65rem;display:inline-block;transition:.25s}
+.btn:hover{border-color:var(--blue);background:rgba(110,159,216,.06)}
+.timeline{border-left:1px solid var(--line);margin-left:15px}
+.event{padding:0 0 55px 45px;position:relative}
+.event:before{content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;border:1px solid var(--blue);border-radius:50%;background:var(--bg)}
+.year{color:var(--blue);font-size:.72rem}.event h3{font:500 1.7rem var(--serif);margin:8px 0}
+.archive{padding:30px;margin-top:30px}
+.archive-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.transmissions{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.transmission{padding:27px;cursor:pointer;transition:.3s}
+.transmission:hover{border-color:var(--blue);transform:translateY(-3px)}
+.transmission h3{font:500 1.6rem var(--serif);margin:15px 0 8px}
+.transmission p{font:400 1rem/1.65 var(--serif);color:#c2ccda}
+.music{display:grid;grid-template-columns:180px 1fr;gap:30px;align-items:center;padding:28px}
+.album{aspect-ratio:1;background:conic-gradient(from 20deg,#172a46,#b15ac2,#0c1c35,#d8b277,#172a46);display:grid;place-items:center;font:500 1.7rem var(--serif)}
+.instrument{padding:28px}
+.current-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}
+.current-grid>div{background:var(--bg2);padding:25px}
+.current-grid b{display:block;color:var(--muted);font-size:.67rem;margin-bottom:10px}
+.skills{padding:45px;position:relative;min-height:330px}
+.skill{position:absolute;padding:10px 14px;border:1px solid var(--line);font-size:.68rem;background:var(--bg)}
+.s1{left:8%;top:15%}.s2{left:30%;top:32%}.s3{left:54%;top:14%}.s4{right:7%;top:38%}.s5{left:18%;bottom:15%}.s6{left:43%;bottom:23%}.s7{right:17%;bottom:13%}.s8{left:61%;bottom:7%}.s9{left:3%;top:50%}.s10{right:3%;top:10%}
+.contact{text-align:center;padding:70px 20px}
+.contact h2{font:500 clamp(2.5rem,7vw,6rem) var(--serif);margin:10px 0 15px}
+.contact-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}
+footer{border-top:1px solid var(--line);padding:30px 0 50px;display:flex;justify-content:space-between;color:var(--muted);font-size:.67rem}
+.modal{position:fixed;inset:0;background:rgba(2,4,10,.82);backdrop-filter:blur(12px);z-index:50;display:none;place-items:center;padding:20px}
+.modal.open{display:grid}.modal-card{width:min(700px,100%);padding:35px;max-height:80vh;overflow:auto}.close{float:right;background:none;border:1px solid var(--line);color:var(--ink);padding:7px 10px;cursor:pointer}
+@media(max-width:760px){
+ nav{padding:0 18px}.nav-links{display:none}.menu{display:block}
+ .about-grid,.archive-grid,.transmissions{grid-template-columns:1fr}
+ .orbit-map{min-height:900px}.nodes{inset:15px}.node{width:145px}
+ .n1{left:0;top:7%}.n2{left:30%;top:0}.n3{right:0;top:15%}.n4{right:0;top:48%}.n5{right:26%;bottom:5%}.n6{left:28%;bottom:0}.n7{left:0;bottom:16%}.n8{left:0;top:35%}
+ .mission{grid-template-columns:1fr}.music{grid-template-columns:1fr}
+ footer{display:block;line-height:2}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+
+<nav>
+  <a href="#top" class="mono">BALENDU</a>
+  <div class="nav-links">
+    <a href="#about">WHO AM I</a><a href="#orbit">ORBIT</a><a href="#missions">MISSIONS</a>
+    <a href="#archive">ARCHIVE</a><a href="#transmissions">TRANSMISSIONS</a><a href="#contact">CONTACT</a>
+  </div>
+  <div class="status mono"><span class="dot"></span> OBSERVATORY ONLINE</div>
+  <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile')" aria-label="Toggle navigation">MENU</button>
+</nav>
+
+<main id="top">
+<section class="hero">
+ <div class="hero-inner">
+  <div class="mono" id="init">INITIALIZING PERSONAL ARCHIVE...</div>
+  <div class="orbit" aria-hidden="true">
+  <div class="planet">
+    <img
+      src="Balendu Bhushan.jpg"
+      alt="Portrait of Balendu Bhushan Pandey"
+      class="portrait-image"
+    >
+  </div>
+</div>
+  </div>
+  <h1>BALENDU BHUSHAN PANDEY</h1>
+  <div class="mono">STUDENT / ARTIST / OBSERVER</div>
+  <p class="lede">“I am interested in the things humans leave behind: ideas, cities, borders, paintings, stories, and civilizations.”</p>
+  <div class="meta mono"><span>EARTH</span><span>INDIA</span><span>EST. 2007</span><span>CURRENT STATUS // EXPLORING</span></div>
+  <div class="scroll mono">SCROLL TO ENTER THE ARCHIVE ↓</div>
+ </div>
+</section>
+
+<section id="about">
+<div class="container">
+ <div class="section-head"><div><div class="mono">01 // WHO AM I</div><h2 class="section-title">A person with too many rabbit holes.</h2></div><div class="mono">OBSERVATION SUBJECT // HUMAN</div></div>
+ <div class="about-grid">
+  <div class="about-copy">I’m Balendu, a college student with a habit of falling into subjects far larger than the syllabus intended.<br><br>
+  I’m fascinated by history, anthropology, geography, politics, art, design, technology, and the strange ways humans organize themselves into societies.<br><br>
+  Sometimes that curiosity turns into a painting. Sometimes a presentation, a website, a hackathon project, a page of notes, or an unnecessarily deep conversation about civilization.<br><br>
+  I like learning across boundaries because the most interesting ideas rarely stay inside one subject.</div>
+  <div class="panel profile"><div class="mono">PROFILE RECORD</div><pre>NAME          BALENDU BHUSHAN PANDEY
+STATUS        COLLEGE STUDENT
+INTERESTS     HISTORY
+              ANTHROPOLOGY
+              GEOGRAPHY
+              ART
+              POLITICS
+              DESIGN
+              TECHNOLOGY</pre></div>
+ </div>
+</div>
+</section>
+
+<section id="orbit">
+<div class="container">
+ <div class="section-head"><div><div class="mono">02 // ORBIT</div><h2 class="section-title">The things that keep pulling me back.</h2></div><div class="mono">ORBITAL INTERESTS // 08</div></div>
+ <div class="panel orbit-map"><div class="connections"></div><div class="core serif">BALENDU</div><div class="nodes">
+  <div class="node n1"><span class="mono">01</span><strong>HISTORY</strong><p>Civilizations · Revolutions · Memory</p></div>
+  <div class="node n2"><span class="mono">02</span><strong>ANTHROPOLOGY</strong><p>Culture · Society · Human behaviour</p></div>
+  <div class="node n3"><span class="mono">03</span><strong>GEOGRAPHY</strong><p>Maps · Cities · Landscapes · Borders</p></div>
+  <div class="node n4"><span class="mono">04</span><strong>ART</strong><p>Painting · Illustration · Visual storytelling</p></div>
+  <div class="node n5"><span class="mono">05</span><strong>POLITICS</strong><p>Institutions · Power · Ideas</p></div>
+  <div class="node n6"><span class="mono">06</span><strong>DESIGN</strong><p>Interfaces · Visual systems · Communication</p></div>
+  <div class="node n7"><span class="mono">07</span><strong>TECHNOLOGY</strong><p>Web · Digital tools · Hackathons</p></div>
+  <div class="node n8"><span class="mono">08</span><strong>MUSIC</strong><p>Albums · Atmosphere · Sound</p></div>
+ </div></div>
+ <div style="height:90px"></div>
+ <div class="section-head"><div><div class="mono">ORBIT // CREATIVE FREQUENCY</div><h2 class="section-title">I make things because looking at the world isn't always enough.</h2></div></div>
+ <div class="gallery">
+
+  <!-- WORK 001 -->
+  <article class="art panel">
+    <img
+      src="starry_night.jpg"
+      alt="Balendu's Starry Night oil painting"
+      class="art-image"
+    >
+    <div class="caption">
+      <span class="mono">WORK // 001</span>
+      <b>STARRY NIGHT STUDY</b>
+      Oil painting · PERSONAL WORK
+    </div>
+  </article>
+
+  <!-- WORK 002 -->
+  <article class="art panel">
+    <img
+      src="currents.jpg"
+      alt="Balendu's Currents inspired digital artwork"
+      class="art-image"
+    >
+    <div class="caption">
+      <span class="mono">WORK // 002</span>
+      <b>CURRENTS // VISUAL STUDY</b>
+      Digital artwork · Inspired by the visual atmosphere of psychedelic music
+    </div>
+  </article>
+
+  <!-- WORK 003 -->
+  <article class="art panel">
+    <img
+      src="poster_logo.jpg"
+      alt="Balendu's poster and graphic design experiments"
+      class="art-image"
+    >
+    <div class="caption">
+      <span class="mono">WORK // 003</span>
+      <b>GRAPHIC EXPERIMENTS</b>
+      Posters · Logo studies
+    </div>
+  </article>
+
+  <!-- WORK 004 -->
+  <article class="art panel">
+    <img
+      src="sketch.jpg"
+      alt="Balendu's sketches and visual notes"
+      class="art-image"
+    >
+    <div class="caption">
+      <span class="mono">WORK // 004</span>
+      <b>VISUAL NOTES</b>
+      Sketches · Photography · Website designs
+    </div>
+  </article>
+
+</div>
+</div>
+</section>
+
+<section id="missions">
+<div class="container">
+ <div class="section-head"><div><div class="mono">03 // MISSIONS</div><h2 class="section-title">Things I built while trying to turn ideas into real objects.</h2></div></div>
+ <div class="missions">
+  <article class="panel mission"><div class="mono">MISSION 001</div><div><h3>CODECRUSHERS</h3><div class="mono">HACKATHON // SMART INDIA HACKATHON</div><p>A student innovation team built around solving real-world problems through technology, design, and collaborative problem solving.</p></div><a class="btn" href="#contact">OPEN RECORD</a></article>
+  <article class="panel mission"><div class="mono">MISSION 002</div><div><h3>MYCOGRID</h3><div class="mono">LIVING INFRASTRUCTURE / 2040</div><p>A speculative future-facing concept exploring how biological systems and infrastructure could interact to create more adaptive, sustainable urban environments.</p></div><a class="btn" href="#contact">OPEN RECORD</a></article>
+  <article class="panel mission"><div class="mono">MISSION 003</div><div><h3>LAUNDRY DASH</h3><div class="mono">PRODUCT CONCEPT</div><p>A startup-style service concept focused on making everyday laundry logistics simpler through a convenient digital experience.</p></div><a class="btn" href="#contact">OPEN RECORD</a></article>
+  <article class="panel mission"><div class="mono">MISSION 004</div><div><h3>PERSONAL WEB PROJECTS</h3><div class="mono">DIGITAL EXPERIMENTS</div><p>Experiments in HTML, CSS, interface design, visual storytelling, and digital presentation.</p></div><a class="btn" href="#contact">OPEN RECORD</a></article>
+ </div>
+</div>
+</section>
+
+<section id="archive">
+<div class="container">
+ <div class="section-head"><div><div class="mono">04 // ARCHIVE</div><h2 class="section-title">Everything that happened before this page.</h2></div></div>
+ <div class="timeline">
+  <div class="event"><div class="year">2007</div><h3>ORIGIN</h3><div>Born.</div></div>
+  <div class="event"><div class="year">2014</div><h3>FIRST ORBIT</h3><div>Started school.</div></div>
+  <div class="event"><div class="year">2023</div><h3>NEW TRAJECTORY</h3><div>Class X and the beginning of a period of increasing academic and creative experimentation.</div></div>
+  <div class="event"><div class="year">2025</div><h3>FINAL SCHOOL YEAR</h3><div>Class XII. School magazine work, creative projects, academic preparation, and the transition toward college.</div></div>
+  <div class="event"><div class="year">2026</div><h3>NEW ORBIT</h3><div>Entered college. Started exploring new projects, hackathons, design work, and new academic interests.</div></div>
+ </div>
+ <div class="archive panel">
+  <div class="mono">ARCHIVAL DOCUMENT // SCHOOL YEARS</div>
+  <h2 class="serif">AATM DHWANI</h2>
+  <p>Annual school magazine project in which Balendu worked as Chief Editor, bringing together writing, editing, design, school events, contemporary science, history, geography, language, and student work.</p>
+  <div class="mono">SCHOOL · SCIENCE & CONTEMPORARY · HUMAN HIGHLIGHT · HISTORY & GEOGRAPHY · LANGUAGE · MISC.</div>
+ </div>
+</div>
+</section>
+
+<section id="transmissions">
+<div class="container">
+ <div class="section-head"><div><div class="mono">05 // TRANSMISSIONS</div><h2 class="section-title">Thoughts transmitted from somewhere between curiosity and unfinished ideas.</h2></div></div>
+ <div class="transmissions">
+  <article class="panel transmission" onclick="openNote('ON HISTORY','History is not simply a record of what happened. It is also the record of what people decided was worth remembering.')"><div class="mono">TRANSMISSION 001</div><h3>ON HISTORY</h3><p>History is not simply a record of what happened. It is also the record of what people decided was worth remembering.</p></article>
+  <article class="panel transmission" onclick="openNote('ON CITIES','Cities are enormous collective experiments. Millions of strangers negotiate space, culture, memory, ambition, and survival every day.')"><div class="mono">TRANSMISSION 002</div><h3>ON CITIES</h3><p>Cities are enormous collective experiments. Millions of strangers negotiate space, culture, memory, ambition, and survival every day.</p></article>
+  <article class="panel transmission" onclick="openNote('ON ART','Art is one of the oldest ways humans have tried to make private experiences visible to other people.')"><div class="mono">TRANSMISSION 003</div><h3>ON ART</h3><p>Art is one of the oldest ways humans have tried to make private experiences visible to other people.</p></article>
+  <article class="panel transmission" onclick="openNote('ON CURIOSITY','Curiosity is often less about finding answers and more about finding better questions.')"><div class="mono">TRANSMISSION 004</div><h3>ON CURIOSITY</h3><p>Curiosity is often less about finding answers and more about finding better questions.</p></article>
+  <article class="panel transmission" onclick="openNote('FIELD NOTE','I tend to become interested in the things that sit between categories: history and geography, technology and design, politics and culture, science and imagination.')"><div class="mono">TRANSMISSION 005</div><h3>FIELD NOTE</h3><p>I tend to become interested in the things that sit between categories: history and geography, technology and design, politics and culture, science and imagination.</p></article>
+ </div>
+ <div style="height:60px"></div>
+ <div class="panel music">
+  <div class="album">CURRENTS</div>
+  <div><div class="mono">SIGNAL FREQUENCY // MUSIC</div><h2 class="serif">Songs currently occupying the observatory.</h2><div class="mono">NOW TRANSMITTING</div><h3 class="serif" style="font-size:2rem;margin:8px 0">LET IT HAPPEN</h3><div>TAME IMPALA</div><div style="margin:25px 0;border-top:1px solid var(--line)"></div><div class="mono">◀ &nbsp; PLAY &nbsp; ▶ &nbsp;&nbsp; SIGNAL // 04</div></div>
+ </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+ <div class="section-head"><div><div class="mono">CURRENT OBSERVATIONS</div><h2 class="section-title">What is occupying the terminal.</h2></div></div>
+ <div class="panel current-grid">
+  <div><b>STUDYING</b>College coursework</div><div><b>EXPLORING</b>History · Anthropology · Design</div>
+  <div><b>BUILDING</b>Digital projects · Hackathon ideas</div><div><b>CREATING</b>Art · Visual experiments</div>
+  <div><b>LISTENING TO</b>Tame Impala</div><div><b>THINKING ABOUT</b>How humans turn places into stories.</div>
+ </div>
+ <div style="height:100px"></div>
+ <div class="section-head"><div><div class="mono">CAPABILITIES // INSTRUMENT PANEL</div><h2 class="section-title">A constellation of capabilities.</h2></div></div>
+ <div class="panel skills">
+  <span class="skill s1">HTML / CSS</span><span class="skill s2">JavaScript</span><span class="skill s3">C++</span><span class="skill s4">UI / UX</span>
+  <span class="skill s5">Graphic Design</span><span class="skill s6">Presentation Design</span><span class="skill s7">Writing</span><span class="skill s8">Research</span>
+  <span class="skill s9">Visual Communication</span><span class="skill s10">Creative Direction</span>
+ </div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+ <div class="panel contact">
+  <div class="mono">06 // CONTACT</div><h2>SIGNAL ME</h2>
+  <p class="serif" style="font-size:1.25rem;color:var(--muted)">Every archive eventually needs a way to receive new transmissions.</p>
+  <div class="contact-actions"><a class="btn" href="#" onclick="return false">EMAIL</a><a class="btn" href="balendupandey25@gmail.com" onclick="return false">LINKEDIN</a><a class="btn" href="https://www.github.com/balendupandey25" onclick="return false">GITHUB</a><a class="btn" href="https://github.com/balendupandey25-del" onclick="return false">INSTAGRAM</a></div>
+  <div class="mono" style="margin-top:40px">COMMUNICATION STATUS<br><span style="color:var(--ink)">OPEN TO NEW IDEAS</span><br><br>SIGNAL STRENGTH<br><span style="color:var(--ink)">█████████░</span><br><br>END OF ARCHIVE</div>
+ </div>
+</div>
+</section>
+</main>
+
+<footer class="container">
+ <div><strong>BALENDU // DEEP SPACE ARCHIVE</strong><br>Built somewhere between curiosity and procrastination.</div>
+ <div>© 2026 BALENDU BHUSHAN PANDEY</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Transmission">
+ <div class="panel modal-card"><button class="close" onclick="closeNote()">CLOSE</button><div class="mono">SIGNAL RECEIVED</div><h2 id="modalTitle" class="serif" style="font-size:2.7rem"></h2><p id="modalBody" class="serif" style="font-size:1.35rem;line-height:1.7;color:#c7d0dd"></p></div>
+</div>
+
+<script>
+const starfield=document.getElementById('stars');
+for(let i=0;i<125;i++){
+  const s=document.createElement('span'); s.className='star';
+  s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+  s.style.opacity=(.15+Math.random()*.65).toFixed(2);
+  s.style.animationDelay=(Math.random()*6)+'s';
+  s.style.animationDuration=(3+Math.random()*7)+'s';
+  starfield.appendChild(s);
+}
+setTimeout(()=>document.getElementById('init').textContent='ARCHIVE ONLINE',2200);
+function openNote(title,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').textContent=body;document.getElementById('modal').classList.add('open')}
+function closeNote(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeNote()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNote()});
+const links=document.querySelectorAll('.nav-links a');
+links.forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('mobile')));
+</script>
+</body>
+</html>
